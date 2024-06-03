@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 export const SearchBar:FC<{defaultValue?:string;type?:'images'|'collections';setSearch?:Function}> = ({defaultValue='',type='images',setSearch}) => {
     const navigate = useNavigate()
     const search = (e:KeyboardEvent<HTMLInputElement>) => {
-        if(!(e.code==='Enter')) return
+        if(!(e.key==='Enter')) return
         if(type==='images') {
             if(!e.currentTarget.value) return
             if(e.currentTarget.value===defaultValue) return
             navigate(`/search?query=${e.currentTarget.value}`)
         } else if (type==='collections') {
             if(!setSearch) return
+            // @ts-ignore
             setSearch(e.currentTarget.value)
         }
     }
