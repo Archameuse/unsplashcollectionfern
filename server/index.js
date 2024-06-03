@@ -8,7 +8,9 @@ const axios  = require('axios');
 
 const app = Express()
 app.use(Express.json())
-app.use(cors({}))
+app.use(cors({
+    origin: 'https://unsplashcollectionfern.vercel.app'
+}))
 
 const PORT = process.env.PORT
 const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT)
